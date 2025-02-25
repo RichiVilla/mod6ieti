@@ -8,16 +8,34 @@
     <artifactId>IETI_RaylwayApp</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <properties>
+        <java.version>17</java.version>  <!-- Asegura que use Java 17 -->
+        <spring-boot.version>3.2.2</spring-boot.version>  <!-- Última versión estable -->
+    </properties>
+
     <dependencies>
+        <!-- Spring Boot Web -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>3.4.2</version>
+            <version>${spring-boot.version}</version>
         </dependency>
     </dependencies>
+
     <build>
         <plugins>
-            <!-- Plugin para generar un JAR ejecutable con la clase principal -->
+            <!-- Plugin de compilación (NECESARIO para que compile bien) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                </configuration>
+            </plugin>
+
+            <!-- Plugin de JAR ejecutable -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
@@ -31,10 +49,11 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin de Spring Boot para empaquetar correctamente el JAR -->
+            <!-- Plugin de Spring Boot -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot.version}</version>
             </plugin>
         </plugins>
     </build>
