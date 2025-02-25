@@ -17,7 +17,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia el archivo JAR de tu aplicación al directorio de trabajo
-COPY --from=build /app/build/libs/<nombre_jar_generado>.jar .
+COPY --from=build /app/build/libs/IETI_Raylway-1.0-SNAPSHOT.jar .
 COPY --from=build /app/src/main/resources/application.properties .
 
 # Exponer el puerto que utilizará la aplicación
