@@ -1,5 +1,5 @@
-# Utiliza una imagen base con OpenJDK 17 y Maven 3.8.6
-FROM maven:3.8.6-openjdk-17 AS build
+# Usa Maven con OpenJDK 17 basado en Eclipse Temurin
+FROM maven:3.8.6-eclipse-temurin-17 AS build
 
 # Establece el directorio de trabajo
 WORKDIR /app
