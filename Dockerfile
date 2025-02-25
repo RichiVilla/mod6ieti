@@ -5,7 +5,8 @@ FROM maven:3.8.6-eclipse-temurin-17 AS build
 WORKDIR /app
 
 # Copia los archivos del proyecto al contenedor
-COPY . .
+COPY pom.xml .
+COPY src ./src
 
 # Construye la aplicación con Maven (sin ejecutar tests para acelerar el build)
 RUN mvn clean package -DskipTests
@@ -18,7 +19,6 @@ WORKDIR /app
 
 # Copia el archivo JAR de la aplicación al contenedor
 COPY --from=build /app/target/IETI_RaylwayApp-1.0-SNAPSHOT.jar app.jar
-COPY --from=build /app/src/main/resources/application.properties application.properties
 
 # Exponer el puerto que utilizará la aplicación
 EXPOSE 8080
