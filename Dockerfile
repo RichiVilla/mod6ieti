@@ -18,7 +18,7 @@ FROM openjdk:17-jdk-slim
 WORKDIR /app
 
 # Copia el archivo JAR de la aplicación al contenedor
-COPY --from=build /app/target/IETI_RaylwayApp-1.0-SNAPSHOT.jar
+COPY --from=build /app/target/IETI_RaylwayApp-1.0-SNAPSHOT.jar .
 COPY --from=build /app/src/main/resources/application.properties .
 
 
